@@ -2096,6 +2096,9 @@ hipError_t hipMemcpy(void *Dst, const void *Src, size_t SizeBytes,
   NULLCHECK(Dst);
   CHECK(Src);
 
+  // See https://github.com/CHIP-SPV/chip-spv/issues/152.
+  // Let's be safe first, and optimize the asynch behavior later.
+  hipDeviceSynchronize();
   if (SizeBytes == 0)
     RETURN(hipSuccess);
 
