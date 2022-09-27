@@ -28,7 +28,7 @@ For a list of (un)supported features in CHIP-SPV, read [this.](docs/Features.md)
 ## Downloading Sources
 
 ```bash
-git clone https://github.com/CHIP-SPV/chip-spv.git
+git clone https://github.com/CHIP-SPV/chip-spv.git -b Release-0.9
 cd chip-spv
 git submodule update --init --recursive
 ```
