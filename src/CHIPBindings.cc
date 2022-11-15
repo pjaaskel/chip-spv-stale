@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2021-22 CHIP-SPV developers
+ * Copyright (c) 2021-23 CHIP-SPV developers
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -3678,6 +3678,15 @@ hipError_t hipGetSymbolSize(size_t *Size, const void *Symbol) {
 
   *Size = Var->getSize();
   RETURN(hipSuccess);
+  CHIP_CATCH
+}
+
+int hipGetStreamDeviceId(hipStream_t Stream) {
+  CHIP_TRY
+  CHIPInitialize();
+  CHIPDevice *Device =
+    Backend->findQueue(static_cast<CHIPQueue *>(Stream))->getDevice();
+  return Device->getDeviceId();
   CHIP_CATCH
 }
 
